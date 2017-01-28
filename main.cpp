@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <cstring>
@@ -15,30 +15,30 @@ using namespace std;
 struct _BITMAPFILEHEADER
 {
 	WORD Type; 				// 'BM' 0x4D42
-	DWORD Size; 			// Размер файла в байтах, BitCount*Height*Width+ OffsetBits
-	WORD Reserved1; 	// Зарезервирован; должен быть нуль
-	WORD Reserved2; 	// Зарезервирован; должен быть нуль
-	DWORD OffsetBits; // Смещение данных от начала файла в байтах
+	DWORD Size; 			// Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С…, BitCount*Height*Width+ OffsetBits
+	WORD Reserved1; 	// Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅ; РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅСѓР»СЊ
+	WORD Reserved2; 	// Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅ; РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅСѓР»СЊ
+	DWORD OffsetBits; // РЎРјРµС‰РµРЅРёРµ РґР°РЅРЅС‹С… РѕС‚ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С…
 										// = sizeof(_BITMAPFILEHEADER)+sizeof(_BITMAPINFOHEADER)
 };
 #pragma pack(pop)
 
 struct _BITMAPINFOHEADER
 {
-	DWORD Size; 					// Число байтов необходимое для структуры = 40
-	DWORD Width; 					// Ширина точечного рисунка в пикселях
-	DWORD Height; 				// Высота точечного рисунка в пикселях
-	WORD Planes; 					// Число плоскостей целевого устройства = 1
-	WORD BitCount;				// Глубина цвета, число бит на точку = 0,1,4,8,16,24,32
-	DWORD Compression;		// Тип сжатия = 0 для несжатого изображения
-	DWORD SizeImage; 			// Размер изображения в байтах BitCount*Height*Width
-	DWORD XPelsPerMeter; 	// Разрешающая способность по горизонтали
-	DWORD YPelsPerMeter; 	// Разрешающая способность по вертикали
-	DWORD ColorUsed; 			// Число индексов используемых цветов. Если все цвета = 0
-	DWORD ColorImportant; // Число необходимых цветов = 0
+	DWORD Size; 					// Р§РёСЃР»Рѕ Р±Р°Р№С‚РѕРІ РЅРµРѕР±С…РѕРґРёРјРѕРµ РґР»СЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ = 40
+	DWORD Width; 					// РЁРёСЂРёРЅР° С‚РѕС‡РµС‡РЅРѕРіРѕ СЂРёСЃСѓРЅРєР° РІ РїРёРєСЃРµР»СЏС…
+	DWORD Height; 				// Р’С‹СЃРѕС‚Р° С‚РѕС‡РµС‡РЅРѕРіРѕ СЂРёСЃСѓРЅРєР° РІ РїРёРєСЃРµР»СЏС…
+	WORD Planes; 					// Р§РёСЃР»Рѕ РїР»РѕСЃРєРѕСЃС‚РµР№ С†РµР»РµРІРѕРіРѕ СѓСЃС‚СЂРѕР№СЃС‚РІР° = 1
+	WORD BitCount;				// Р“Р»СѓР±РёРЅР° С†РІРµС‚Р°, С‡РёСЃР»Рѕ Р±РёС‚ РЅР° С‚РѕС‡РєСѓ = 0,1,4,8,16,24,32
+	DWORD Compression;		// РўРёРї СЃР¶Р°С‚РёСЏ = 0 РґР»СЏ РЅРµСЃР¶Р°С‚РѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+	DWORD SizeImage; 			// Р Р°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ Р±Р°Р№С‚Р°С… BitCount*Height*Width
+	DWORD XPelsPerMeter; 	// Р Р°Р·СЂРµС€Р°СЋС‰Р°СЏ СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
+	DWORD YPelsPerMeter; 	// Р Р°Р·СЂРµС€Р°СЋС‰Р°СЏ СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РїРѕ РІРµСЂС‚РёРєР°Р»Рё
+	DWORD ColorUsed; 			// Р§РёСЃР»Рѕ РёРЅРґРµРєСЃРѕРІ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… С†РІРµС‚РѕРІ. Р•СЃР»Рё РІСЃРµ С†РІРµС‚Р° = 0
+	DWORD ColorImportant; // Р§РёСЃР»Рѕ РЅРµРѕР±С…РѕРґРёРјС‹С… С†РІРµС‚РѕРІ = 0
 };
 
-struct _RGBQUAD;     // объявляем, чтобы не было проблем с перегрузкой далее
+struct _RGBQUAD;     // РѕР±СЉСЏРІР»СЏРµРј, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РїСЂРѕР±Р»РµРј СЃ РїРµСЂРµРіСЂСѓР·РєРѕР№ РґР°Р»РµРµ
 
 struct _RGBTRIPLE
 {
@@ -60,7 +60,7 @@ struct _RGBQUAD
   _RGBQUAD& operator= (const _RGBTRIPLE& source);
 };
 
-// Перегружаем оператор присваивания, т.к. дальше много где это требуется
+// РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ РїСЂРёСЃРІР°РёРІР°РЅРёСЏ, С‚.Рє. РґР°Р»СЊС€Рµ РјРЅРѕРіРѕ РіРґРµ СЌС‚Рѕ С‚СЂРµР±СѓРµС‚СЃСЏ
 _RGBTRIPLE& _RGBTRIPLE::operator= (const _RGBQUAD& source)
 {
   this->Blue = source.Blue;
@@ -89,7 +89,7 @@ _RGBQUAD& _RGBQUAD::operator= (const _RGBTRIPLE& source)
 }
 
 
-// Перегружаем оператор сравнения для разных комбинаций структур
+// РџРµСЂРµРіСЂСѓР¶Р°РµРј РѕРїРµСЂР°С‚РѕСЂ СЃСЂР°РІРЅРµРЅРёСЏ РґР»СЏ СЂР°Р·РЅС‹С… РєРѕРјР±РёРЅР°С†РёР№ СЃС‚СЂСѓРєС‚СѓСЂ
 
 bool operator == (const _RGBTRIPLE &rgbtriple1, const _RGBTRIPLE &rgbtriple2) {
     return rgbtriple1.Blue == rgbtriple2.Blue && rgbtriple1.Green == rgbtriple2.Green &&
@@ -113,15 +113,15 @@ bool operator == (const _RGBQUAD &rgbquad1, const _RGBQUAD &rgbquad2) {
 // --------------------------------------
 
 
-// Находит наиболее близкий цвет в палитре для указанного цвета
+// РќР°С…РѕРґРёС‚ РЅР°РёР±РѕР»РµРµ Р±Р»РёР·РєРёР№ С†РІРµС‚ РІ РїР°Р»РёС‚СЂРµ РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С†РІРµС‚Р°
 WORD getColorInPalette(BYTE r, BYTE g, BYTE b, _RGBQUAD *Palette, DWORD colorCnt)
 {
   double minDistance = -1, distance;
   WORD num = 0;
 
-  for(int i = 0; i < colorCnt; i++)   // проходим по всей палитре
+  for(int i = 0; i < colorCnt; i++)   // РїСЂРѕС…РѕРґРёРј РїРѕ РІСЃРµР№ РїР°Р»РёС‚СЂРµ
   {
-      // вычисляем дистанцию для текущего цвета
+      // РІС‹С‡РёСЃР»СЏРµРј РґРёСЃС‚Р°РЅС†РёСЋ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ С†РІРµС‚Р°
     distance = sqrt(pow(r - Palette[i].Red, 2)
                 + pow(g - Palette[i].Green, 2)
                 + pow(b - Palette[i].Blue, 2) );
@@ -132,10 +132,10 @@ WORD getColorInPalette(BYTE r, BYTE g, BYTE b, _RGBQUAD *Palette, DWORD colorCnt
       num = i;
     }
   }
-  return num;   // возвращаем номер наиболее близкого цвета к указанному
+  return num;   // РІРѕР·РІСЂР°С‰Р°РµРј РЅРѕРјРµСЂ РЅР°РёР±РѕР»РµРµ Р±Р»РёР·РєРѕРіРѕ С†РІРµС‚Р° Рє СѓРєР°Р·Р°РЅРЅРѕРјСѓ
 }
 
-// Делает то же самое, но имеет другие входные и выходные значения
+// Р”РµР»Р°РµС‚ С‚Рѕ Р¶Рµ СЃР°РјРѕРµ, РЅРѕ РёРјРµРµС‚ РґСЂСѓРіРёРµ РІС…РѕРґРЅС‹Рµ Рё РІС‹С…РѕРґРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
 _RGBQUAD getColorInPalette(const _RGBTRIPLE sourcePixel, _RGBQUAD *Palette, DWORD BitCount)
 {
   double minDistance = -1, distance;
@@ -159,7 +159,7 @@ _RGBQUAD getColorInPalette(const _RGBTRIPLE sourcePixel, _RGBQUAD *Palette, DWOR
 
 // ------------------
 
-// Стандартная 16-цветная палитра
+// РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ 16-С†РІРµС‚РЅР°СЏ РїР°Р»РёС‚СЂР°
 const BYTE stdPalette16[16][3] = {
 	  {0x00, 0x00, 0x00},
 	  {0x80, 0x00, 0x00},
@@ -179,19 +179,19 @@ const BYTE stdPalette16[16][3] = {
 	  {0xFF, 0xFF, 0xFF}
 };
 
-// 2-хцветная палитра
+// 2-С…С†РІРµС‚РЅР°СЏ РїР°Р»РёС‚СЂР°
 const BYTE stdPalette2[2][3] = {
 	{0x00, 0x00, 0x00},
 	{0xFF, 0xFF, 0xFF}
 };
 
-// Заполнение палитры в зависимости от глубины
+// Р—Р°РїРѕР»РЅРµРЅРёРµ РїР°Р»РёС‚СЂС‹ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РіР»СѓР±РёРЅС‹
 void fillPalette(_RGBQUAD *Palette, DWORD BitCount)
 {
   WORD a;
-  if(BitCount == 8)   // 256 цветов
+  if(BitCount == 8)   // 256 С†РІРµС‚РѕРІ
   {
-    // "Безопасная" палитра
+    // "Р‘РµР·РѕРїР°СЃРЅР°СЏ" РїР°Р»РёС‚СЂР°
     for (WORD i = 0; i < 256; i += 51)
       for(WORD j = 0; j < 256; j += 51)
         for(WORD k = 0; k < 256; k += 51)
@@ -203,7 +203,7 @@ void fillPalette(_RGBQUAD *Palette, DWORD BitCount)
           a++;
         }
 
-    // В конец допишем ещё 18 градаций серого
+    // Р’ РєРѕРЅРµС† РґРѕРїРёС€РµРј РµС‰С‘ 18 РіСЂР°РґР°С†РёР№ СЃРµСЂРѕРіРѕ
     a = 238;
     for(WORD i = 4; i < 256 && a < 256; i += 14)
     {
@@ -212,7 +212,7 @@ void fillPalette(_RGBQUAD *Palette, DWORD BitCount)
       a++;
     }
   }
-  else if(BitCount == 4)  // 16 цветов - стандартная палитра Windows
+  else if(BitCount == 4)  // 16 С†РІРµС‚РѕРІ - СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїР°Р»РёС‚СЂР° Windows
   {
     for(a = 0; a < 16; a++) {
     	Palette[a].Red = stdPalette16[a][0];
@@ -220,7 +220,7 @@ void fillPalette(_RGBQUAD *Palette, DWORD BitCount)
     	Palette[a].Blue = stdPalette16[a][2];
 		}
   }
-  else if(BitCount == 1)    // монохромное изображение
+  else if(BitCount == 1)    // РјРѕРЅРѕС…СЂРѕРјРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
   {
     Palette[0].Red = 0x00; Palette[0].Green = 0x00; Palette[0].Blue = 0x00;
     Palette[1].Red = 0xFF; Palette[1].Green = 0xFF; Palette[1].Blue = 0xFF;
@@ -234,14 +234,14 @@ void fillPalette(_RGBQUAD *Palette, DWORD BitCount)
 // --------------------------------------
 class Image {
 	_BITMAPINFOHEADER BMInfoHeader;
-	_RGBTRIPLE *Rgbtriple;       // Точки изображения
-	_RGBQUAD 	*Palette;         // Палитра
+	_RGBTRIPLE *Rgbtriple;       // РўРѕС‡РєРё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+	_RGBQUAD 	*Palette;         // РџР°Р»РёС‚СЂР°
 
 public:
 	Image (BYTE Mode, WORD BCount, int Width, int Height);
   ~Image ();
 	int loadImage(char *fileName);
-	void writeImage(char *fileName); 							//  запись изображения в файл
+	void writeImage(char *fileName); 							//  Р·Р°РїРёСЃСЊ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ С„Р°Р№Р»
   Image& copyImage(const Image &sourceImage);
 
   WORD getBitCount()
@@ -258,17 +258,17 @@ public:
   }
 
 
-	Image(char *fileName)						//  конструктор объекта изображения из файла
+	Image(char *fileName)						// В РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РѕР±СЉРµРєС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РёР· С„Р°Р№Р»Р°
 	{
 		this -> loadImage(fileName);
 	}
 
-	Image (const Image &sourceImage)				//  конструктор копии
+	Image (const Image &sourceImage)				// В РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёРё
 	{
 		this->copyImage(sourceImage);
 	}
 
-	Image ()										// создает пустой контейнер под изображение
+	Image ()										// СЃРѕР·РґР°РµС‚ РїСѓСЃС‚РѕР№ РєРѕРЅС‚РµР№РЅРµСЂ РїРѕРґ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 	{
 		BMInfoHeader.SizeImage = 0;
     BMInfoHeader.Size = 40;
@@ -286,21 +286,21 @@ public:
 
 	Image& operator=(const Image& sourceImage);
 
-  Image& operator /= (const Image& sourceImage);  // Приведение масштаба к масштабу sourceImage
+  Image& operator /= (const Image& sourceImage);  // РџСЂРёРІРµРґРµРЅРёРµ РјР°СЃС€С‚Р°Р±Р° Рє РјР°СЃС€С‚Р°Р±Сѓ sourceImage
 
-  Image operator / (const WORD Depth);            // Изменение глубиины
+  Image operator / (const WORD Depth);            // РР·РјРµРЅРµРЅРёРµ РіР»СѓР±РёРёРЅС‹
 };
 // ---------------
 
 
 Image& Image::operator=(const Image& sourceImage)
 	{
-		if(this->BMInfoHeader.SizeImage == 0)     // если левое изображение пустое, просто копируем правое
+		if(this->BMInfoHeader.SizeImage == 0)     // РµСЃР»Рё Р»РµРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїСѓСЃС‚РѕРµ, РїСЂРѕСЃС‚Рѕ РєРѕРїРёСЂСѓРµРј РїСЂР°РІРѕРµ
 		{
 			this -> copyImage(sourceImage);
 			return *this;
 		}
-		    // Иначе проверяем, имеют ли изображения одинаковый формат
+		    // РРЅР°С‡Рµ РїСЂРѕРІРµСЂСЏРµРј, РёРјРµСЋС‚ Р»Рё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РѕРґРёРЅР°РєРѕРІС‹Р№ С„РѕСЂРјР°С‚
 		else if(this->BMInfoHeader.BitCount == sourceImage.BMInfoHeader.BitCount &&
             this->BMInfoHeader.Height == sourceImage.BMInfoHeader.Height &&
             this->BMInfoHeader.Width == sourceImage.BMInfoHeader.Width &&
@@ -312,9 +312,9 @@ Image& Image::operator=(const Image& sourceImage)
             //this->BMInfoHeader.ColorImportant == sourceImage.BMInfoHeader.ColorImportant
             )
     {
-      delete[] Rgbtriple;     // удаляем данные о точках изображения-приёмника
+      delete[] Rgbtriple;     // СѓРґР°Р»СЏРµРј РґР°РЅРЅС‹Рµ Рѕ С‚РѕС‡РєР°С… РёР·РѕР±СЂР°Р¶РµРЅРёСЏ-РїСЂРёС‘РјРЅРёРєР°
 
-      if(this->BMInfoHeader.BitCount < 24)    // если это изображение с палитрой, то заменяем её
+      if(this->BMInfoHeader.BitCount < 24)    // РµСЃР»Рё СЌС‚Рѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЃ РїР°Р»РёС‚СЂРѕР№, С‚Рѕ Р·Р°РјРµРЅСЏРµРј РµС‘
       {
         delete[] Palette;
         Palette = new _RGBQUAD[(WORD)pow(2, BMInfoHeader.BitCount)];
@@ -322,7 +322,7 @@ Image& Image::operator=(const Image& sourceImage)
           Palette[i] = sourceImage.Palette[i];
       }
 
-          // Создаём и заполняем массив точек точками из изображения-источника
+          // РЎРѕР·РґР°С‘Рј Рё Р·Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ С‚РѕС‡РµРє С‚РѕС‡РєР°РјРё РёР· РёР·РѕР±СЂР°Р¶РµРЅРёСЏ-РёСЃС‚РѕС‡РЅРёРєР°
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Width * BMInfoHeader.Height];
 
       for(DWORD i = 0; i < BMInfoHeader.Height; i++)
@@ -333,7 +333,7 @@ Image& Image::operator=(const Image& sourceImage)
     return *this;
 	}
 
-  // Создание нового однотонного изображения
+  // РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РѕРґРЅРѕС‚РѕРЅРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 Image::Image(BYTE Mode, WORD BCount, int Width, int Height)
 {
     DWORD offsetBitesAtEnd = 0;
@@ -355,47 +355,47 @@ Image::Image(BYTE Mode, WORD BCount, int Width, int Height)
 
     if(BMInfoHeader.BitCount < 24)
     {
-      // Для палитровых изображений Mode будет номером цвета в палитре
+      // Р”Р»СЏ РїР°Р»РёС‚СЂРѕРІС‹С… РёР·РѕР±СЂР°Р¶РµРЅРёР№ Mode Р±СѓРґРµС‚ РЅРѕРјРµСЂРѕРј С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ
       if(BMInfoHeader.BitCount == 1)
       {
         Palette = new _RGBQUAD[2];
-        fillPalette(Palette, BMInfoHeader.BitCount);  // заполнение палитры
+        fillPalette(Palette, BMInfoHeader.BitCount);  // Р·Р°РїРѕР»РЅРµРЅРёРµ РїР°Р»РёС‚СЂС‹
         BMInfoHeader.ColorUsed = 2;
       }
 
       else if(BMInfoHeader.BitCount == 4)
       {
-          // Палитра - градации серого
+          // РџР°Р»РёС‚СЂР° - РіСЂР°РґР°С†РёРё СЃРµСЂРѕРіРѕ
         Palette = new _RGBQUAD[16];
-        fillPalette(Palette, BMInfoHeader.BitCount);  // заполнение палитры
+        fillPalette(Palette, BMInfoHeader.BitCount);  // Р·Р°РїРѕР»РЅРµРЅРёРµ РїР°Р»РёС‚СЂС‹
         BMInfoHeader.ColorUsed = 16;
       }
 
-      // Создание "безопасной" палитры из 216 цветов
+      // РЎРѕР·РґР°РЅРёРµ "Р±РµР·РѕРїР°СЃРЅРѕР№" РїР°Р»РёС‚СЂС‹ РёР· 216 С†РІРµС‚РѕРІ
       else if(BMInfoHeader.BitCount == 8)
       {
         Palette = new _RGBQUAD[256];
-        fillPalette(Palette, BMInfoHeader.BitCount);  // заполнение палитры
+        fillPalette(Palette, BMInfoHeader.BitCount);  // Р·Р°РїРѕР»РЅРµРЅРёРµ РїР°Р»РёС‚СЂС‹
         BMInfoHeader.ColorUsed = 256;
       }
 
       // ---------------------------
 
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
-			// Заполнение данных изображения
+			// Р—Р°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹С… РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 			for (DWORD i = 0; i < BMInfoHeader.Height; i++)
 				for (DWORD j = 0; j < BMInfoHeader.Width; j++)
 					{
-					  Rgbtriple[i*Width + j] = Palette[Mode];   // копируем цвет из палитры
+					  Rgbtriple[i*Width + j] = Palette[Mode];   // РєРѕРїРёСЂСѓРµРј С†РІРµС‚ РёР· РїР°Р»РёС‚СЂС‹
 					}
     }
 
 		else if (BMInfoHeader.BitCount == 24 || BMInfoHeader.BitCount == 32)
 		{
-			// Выделение памяти для одномерного массива размером Height*Width типа _RGBTRIPLE
+			// Р’С‹РґРµР»РµРЅРёРµ РїР°РјСЏС‚Рё РґР»СЏ РѕРґРЅРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° СЂР°Р·РјРµСЂРѕРј Height*Width С‚РёРїР° _RGBTRIPLE
 			Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
 
-			// Заполнение данных изображения
+			// Р—Р°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹С… РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 			for (DWORD i = 0; i < BMInfoHeader.Height; i++)
         for (DWORD j = 0; j < BMInfoHeader.Width; j++)
 				{
@@ -406,11 +406,11 @@ Image::Image(BYTE Mode, WORD BCount, int Width, int Height)
 		}
 }
 
-  // деструктор
+  // РґРµСЃС‚СЂСѓРєС‚РѕСЂ
 Image::~Image()
 {
 	if(BMInfoHeader.BitCount == 24)	delete[] Rgbtriple;
-	if(BMInfoHeader.BitCount < 24)		// Если у изображения есть палитра
+	if(BMInfoHeader.BitCount < 24)		// Р•СЃР»Рё Сѓ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РµСЃС‚СЊ РїР°Р»РёС‚СЂР°
 	{
 		delete[] Palette;
 		delete[] Rgbtriple;
@@ -423,12 +423,12 @@ int Image::loadImage(char *fileName)
 {
 	_BITMAPFILEHEADER BMFileHeader;
   ifstream fin;
-  DWORD offsetBitesAtEnd = 0;	// Количество байтов, которое нужно добавить в конце строки (см. дальше)
+  DWORD offsetBitesAtEnd = 0;	// РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚РѕРІ, РєРѕС‚РѕСЂРѕРµ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РІ РєРѕРЅС†Рµ СЃС‚СЂРѕРєРё (СЃРј. РґР°Р»СЊС€Рµ)
 
 	fin.open(fileName, ios::binary);
-	fin.read((char*)&BMFileHeader, sizeof(_BITMAPFILEHEADER));				// Получаем инфу из заголовка файла
+	fin.read((char*)&BMFileHeader, sizeof(_BITMAPFILEHEADER));				// РџРѕР»СѓС‡Р°РµРј РёРЅС„Сѓ РёР· Р·Р°РіРѕР»РѕРІРєР° С„Р°Р№Р»Р°
 
-	if(BMFileHeader.Type != 0x4D42)							// Это не BMP
+	if(BMFileHeader.Type != 0x4D42)							// Р­С‚Рѕ РЅРµ BMP
 	{
 		cout << "The file is not BMP!\n";
 		fin.close();
@@ -436,62 +436,62 @@ int Image::loadImage(char *fileName)
 		return 0;
 	}
 
-	fin.seekg(sizeof(_BITMAPFILEHEADER), ios_base::beg);			// Устанавливаем указатель чтения сразу после заголовка
-	fin.read((char*)&BMInfoHeader, sizeof(_BITMAPINFOHEADER));				// Получаем инфу из заголовка изображения
+	fin.seekg(sizeof(_BITMAPFILEHEADER), ios_base::beg);			// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СѓРєР°Р·Р°С‚РµР»СЊ С‡С‚РµРЅРёСЏ СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ Р·Р°РіРѕР»РѕРІРєР°
+	fin.read((char*)&BMInfoHeader, sizeof(_BITMAPINFOHEADER));				// РџРѕР»СѓС‡Р°РµРј РёРЅС„Сѓ РёР· Р·Р°РіРѕР»РѕРІРєР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
 
-  // Если длина строки не кратна 4 байтам, то после строки следует 1, 2 или 3 нулевых байта
-  // Определяем это количество нулевых байтов
+  // Р•СЃР»Рё РґР»РёРЅР° СЃС‚СЂРѕРєРё РЅРµ РєСЂР°С‚РЅР° 4 Р±Р°Р№С‚Р°Рј, С‚Рѕ РїРѕСЃР»Рµ СЃС‚СЂРѕРєРё СЃР»РµРґСѓРµС‚ 1, 2 РёР»Рё 3 РЅСѓР»РµРІС‹С… Р±Р°Р№С‚Р°
+  // РћРїСЂРµРґРµР»СЏРµРј СЌС‚Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅСѓР»РµРІС‹С… Р±Р°Р№С‚РѕРІ
   if(((DWORD)ceil(BMInfoHeader.Width * BMInfoHeader.BitCount / 8.0) % 4) > 0)
     offsetBitesAtEnd = 4 - (DWORD)ceil(BMInfoHeader.Width * BMInfoHeader.BitCount / 8.0) % 4;
 
-	// Если присутствует палитра
+	// Р•СЃР»Рё РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РїР°Р»РёС‚СЂР°
 	if(BMInfoHeader.BitCount < 24)
 	{
-		fin.seekg(sizeof(_BITMAPFILEHEADER) + sizeof(_BITMAPINFOHEADER), ios_base::beg);   // Ставим указатель после заголовков
-		DWORD p_size = pow(2, BMInfoHeader.BitCount);							// Размер палитры
+		fin.seekg(sizeof(_BITMAPFILEHEADER) + sizeof(_BITMAPINFOHEADER), ios_base::beg);   // РЎС‚Р°РІРёРј СѓРєР°Р·Р°С‚РµР»СЊ РїРѕСЃР»Рµ Р·Р°РіРѕР»РѕРІРєРѕРІ
+		DWORD p_size = pow(2, BMInfoHeader.BitCount);							// Р Р°Р·РјРµСЂ РїР°Р»РёС‚СЂС‹
 		Palette = new _RGBQUAD[p_size];
 		for(DWORD i = 0; i < p_size; i++)
-			fin.read((char*)&Palette[i], sizeof(_RGBQUAD));								// Считываем палитру
+			fin.read((char*)&Palette[i], sizeof(_RGBQUAD));								// РЎС‡РёС‚С‹РІР°РµРј РїР°Р»РёС‚СЂСѓ
 	}
 
-	// Чтение изображения
+	// Р§С‚РµРЅРёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
-  // Если это изображение с палитрой
+  // Р•СЃР»Рё СЌС‚Рѕ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЃ РїР°Р»РёС‚СЂРѕР№
   if(BMInfoHeader.BitCount < 24)
   {
-      // Однобитное (чёрно-белое) изображение
+      // РћРґРЅРѕР±РёС‚РЅРѕРµ (С‡С‘СЂРЅРѕ-Р±РµР»РѕРµ) РёР·РѕР±СЂР°Р¶РµРЅРёРµ
     if(BMInfoHeader.BitCount == 1)
     {
       BYTE mask = 0x80;     // 1000 0000
       BYTE tmp;
-        // Это длина одной строки изображения в файле (в байтах)
+        // Р­С‚Рѕ РґР»РёРЅР° РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РІ С„Р°Р№Р»Рµ (РІ Р±Р°Р№С‚Р°С…)
       DWORD bitLineLength = (DWORD)ceil(BMInfoHeader.Width / 8.0);
       DWORD j;
 
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
 
-        // Каждый байт изображения содержит информацию о 8 точках
+        // РљР°Р¶РґС‹Р№ Р±Р°Р№С‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃРѕРґРµСЂР¶РёС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ 8 С‚РѕС‡РєР°С…
       for (DWORD i = 0; i < BMInfoHeader.Height; i++)
       {
         j = 0;
 
         for(DWORD bl = 0; bl < bitLineLength; bl++)
         {
-          tmp = fin.get();    // Читаем очередной байт изображения
+          tmp = fin.get();    // Р§РёС‚Р°РµРј РѕС‡РµСЂРµРґРЅРѕР№ Р±Р°Р№С‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
 
-          for(WORD k = 0; k < 8 && j < BMInfoHeader.Width; k++)    // Проходим по каждому биту
+          for(WORD k = 0; k < 8 && j < BMInfoHeader.Width; k++)    // РџСЂРѕС…РѕРґРёРј РїРѕ РєР°Р¶РґРѕРјСѓ Р±РёС‚Сѓ
           {
             Rgbtriple[i * BMInfoHeader.Width + j++] = Palette[(bool)(tmp & (mask >> k))];
           }
         }
 
-        if(offsetBitesAtEnd)		// если нужно добавить биты, сдвигаем курсор
+        if(offsetBitesAtEnd)		// РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ Р±РёС‚С‹, СЃРґРІРёРіР°РµРј РєСѓСЂСЃРѕСЂ
           fin.seekg(offsetBitesAtEnd, ios_base::cur);
       }
     }
 
-      // 4-битное изображение. В палитре 16 цветов. Один байт изображения содержит инфу о 2-х точках
+      // 4-Р±РёС‚РЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ. Р’ РїР°Р»РёС‚СЂРµ 16 С†РІРµС‚РѕРІ. РћРґРёРЅ Р±Р°Р№С‚ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ СЃРѕРґРµСЂР¶РёС‚ РёРЅС„Сѓ Рѕ 2-С… С‚РѕС‡РєР°С…
     else if(BMInfoHeader.BitCount == 4)
     {
       BYTE mask = 0xF0;   // 11110000
@@ -500,28 +500,28 @@ int Image::loadImage(char *fileName)
       DWORD bitLineLength = (DWORD)ceil(BMInfoHeader.Width / 2.0);
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
 
-      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// сверху вниз
+      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// СЃРІРµСЂС…Сѓ РІРЅРёР·
       {
         j = 0;
-        for(DWORD bl = 0; bl < bitLineLength; bl++)		// слева направо
+        for(DWORD bl = 0; bl < bitLineLength; bl++)		// СЃР»РµРІР° РЅР°РїСЂР°РІРѕ
         {
           tmp = fin.get();
 
-            // tmp & mask позволяет получить первые 4 бита, далее сдвигаем их вправо на 4 и
-            //  получаем байт, содержащий номер цвета в палитре
+            // tmp & mask РїРѕР·РІРѕР»СЏРµС‚ РїРѕР»СѓС‡РёС‚СЊ РїРµСЂРІС‹Рµ 4 Р±РёС‚Р°, РґР°Р»РµРµ СЃРґРІРёРіР°РµРј РёС… РІРїСЂР°РІРѕ РЅР° 4 Рё
+            //  РїРѕР»СѓС‡Р°РµРј Р±Р°Р№С‚, СЃРѕРґРµСЂР¶Р°С‰РёР№ РЅРѕРјРµСЂ С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ
           Rgbtriple[i*BMInfoHeader.Width + j++] = Palette[(BYTE)(tmp & mask) >> 4];
-            // (mask >> 4) - сдвигаем маску вправо и получаем 00001111
-            // далее получаем номер цвета в палитре следующей точке
+            // (mask >> 4) - СЃРґРІРёРіР°РµРј РјР°СЃРєСѓ РІРїСЂР°РІРѕ Рё РїРѕР»СѓС‡Р°РµРј 00001111
+            // РґР°Р»РµРµ РїРѕР»СѓС‡Р°РµРј РЅРѕРјРµСЂ С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ СЃР»РµРґСѓСЋС‰РµР№ С‚РѕС‡РєРµ
           if(j < BMInfoHeader.Width)
             Rgbtriple[i*BMInfoHeader.Width + j++] = Palette[(BYTE)(tmp & (mask >> 4))];
         }
 
-        if(offsetBitesAtEnd)		// если нужно добавить биты, сдвигаем курсор
+        if(offsetBitesAtEnd)		// РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ Р±РёС‚С‹, СЃРґРІРёРіР°РµРј РєСѓСЂСЃРѕСЂ
           fin.seekg(offsetBitesAtEnd, ios_base::cur);
       }
     }
 
-      // 8-битное изображение. В палитре 256 цветов. В одном байте инфа об одной точке.
+      // 8-Р±РёС‚РЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ. Р’ РїР°Р»РёС‚СЂРµ 256 С†РІРµС‚РѕРІ. Р’ РѕРґРЅРѕРј Р±Р°Р№С‚Рµ РёРЅС„Р° РѕР± РѕРґРЅРѕР№ С‚РѕС‡РєРµ.
     else if(BMInfoHeader.BitCount == 8)
     {
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
@@ -530,32 +530,32 @@ int Image::loadImage(char *fileName)
       {
         for(DWORD j = 0; j < BMInfoHeader.Width; j++)
         {
-          // Получаем байт из файла, который является номером цвета в палитре
+          // РџРѕР»СѓС‡Р°РµРј Р±Р°Р№С‚ РёР· С„Р°Р№Р»Р°, РєРѕС‚РѕСЂС‹Р№ СЏРІР»СЏРµС‚СЃСЏ РЅРѕРјРµСЂРѕРј С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ
           Rgbtriple[i*BMInfoHeader.Width + j] = Palette[(BYTE)fin.get()];
         }
 
-        if(offsetBitesAtEnd)		// если нужно добавить биты, сдвигаем курсор
+        if(offsetBitesAtEnd)		// РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ Р±РёС‚С‹, СЃРґРІРёРіР°РµРј РєСѓСЂСЃРѕСЂ
           fin.seekg(offsetBitesAtEnd, ios_base::cur);
       }
 	  }
   }
-    // Если нет палитры
+    // Р•СЃР»Рё РЅРµС‚ РїР°Р»РёС‚СЂС‹
   else
   {
-    fin.seekg(BMFileHeader.OffsetBits, ios_base::beg);		// Ставим указатель на изображение
+    fin.seekg(BMFileHeader.OffsetBits, ios_base::beg);		// РЎС‚Р°РІРёРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РёР·РѕР±СЂР°Р¶РµРЅРёРµ
 
     if(BMInfoHeader.BitCount == 24)
     {
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height * BMInfoHeader.Width];
 
-      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// сверху вниз
+      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// СЃРІРµСЂС…Сѓ РІРЅРёР·
       {
-        for(DWORD j = 0; j < BMInfoHeader.Width; j++)		// слева направо
+        for(DWORD j = 0; j < BMInfoHeader.Width; j++)		// СЃР»РµРІР° РЅР°РїСЂР°РІРѕ
         {
         	fin.read((char*)&Rgbtriple[i*BMInfoHeader.Width + j], sizeof(_RGBTRIPLE));
         }
 
-        if(offsetBitesAtEnd)		// если нужно добавить биты, сдвигаем курсор
+        if(offsetBitesAtEnd)		// РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ Р±РёС‚С‹, СЃРґРІРёРіР°РµРј РєСѓСЂСЃРѕСЂ
           fin.seekg(offsetBitesAtEnd, ios_base::cur);
       }
     }
@@ -565,9 +565,9 @@ int Image::loadImage(char *fileName)
       Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Height*BMInfoHeader.Width];
       _RGBQUAD tmpQuad;
 
-      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// сверху вниз
+      for(DWORD i = 0; i < BMInfoHeader.Height; i++)		// СЃРІРµСЂС…Сѓ РІРЅРёР·
       {
-        for(DWORD j = 0; j < BMInfoHeader.Width; j++)		// слева направо
+        for(DWORD j = 0; j < BMInfoHeader.Width; j++)		// СЃР»РµРІР° РЅР°РїСЂР°РІРѕ
         {
         	fin.read((char*)&tmpQuad, sizeof(_RGBQUAD));
           Rgbtriple[i*BMInfoHeader.Width + j] = tmpQuad;
@@ -585,7 +585,7 @@ int Image::loadImage(char *fileName)
 
 void Image::writeImage(char *fileName)
 {
-	if (BMInfoHeader.Size == 0) return;			// Если изображение не загружено, просто выходим
+	if (BMInfoHeader.Size == 0) return;			// Р•СЃР»Рё РёР·РѕР±СЂР°Р¶РµРЅРёРµ РЅРµ Р·Р°РіСЂСѓР¶РµРЅРѕ, РїСЂРѕСЃС‚Рѕ РІС‹С…РѕРґРёРј
 
 	_BITMAPFILEHEADER BMFileHeader;
   ofstream fout;
@@ -601,7 +601,7 @@ void Image::writeImage(char *fileName)
 	if(((DWORD)ceil(BMInfoHeader.Width * BMInfoHeader.BitCount / 8.0) % 4) > 0)
     offsetBitesAtEnd = 4 - (DWORD)ceil(BMInfoHeader.Width * BMInfoHeader.BitCount / 8.0) % 4;
 
-    // Если есть палитра, учитываем это при определении размера и сдвига
+    // Р•СЃР»Рё РµСЃС‚СЊ РїР°Р»РёС‚СЂР°, СѓС‡РёС‚С‹РІР°РµРј СЌС‚Рѕ РїСЂРё РѕРїСЂРµРґРµР»РµРЅРёРё СЂР°Р·РјРµСЂР° Рё СЃРґРІРёРіР°
 	if (BMInfoHeader.BitCount < 24)
 	{
 		BMFileHeader.OffsetBits += pow(2, BMInfoHeader.BitCount) * sizeof(_RGBQUAD);
@@ -616,10 +616,10 @@ void Image::writeImage(char *fileName)
 	fout.write((char*)&BMFileHeader, sizeof(_BITMAPFILEHEADER));
 	fout.write((char*)&BMInfoHeader, sizeof(_BITMAPINFOHEADER));
 
-  // Чёрно-белое изображение
+  // Р§С‘СЂРЅРѕ-Р±РµР»РѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
   if (BMInfoHeader.BitCount == 1)
   {
-    // Пишем палитру
+    // РџРёС€РµРј РїР°Р»РёС‚СЂСѓ
     for(DWORD i = 0; i < 2; i++)
     	fout.write((char*)&Palette[i], sizeof(_RGBQUAD));
 
@@ -627,8 +627,8 @@ void Image::writeImage(char *fileName)
     {
       for (DWORD j = 0; j < BMInfoHeader.Width; )
       {
-        tmp = Rgbtriple[i * BMInfoHeader.Width + j++].Blue == 0xFF ? 1 : 0;    // R=G=B (либо 00, либо FF), берём значение из любого
-        for(WORD k = 1; k < 8; k++)    // из 8-ми точек (цветов) нужно сформировать один байт
+        tmp = Rgbtriple[i * BMInfoHeader.Width + j++].Blue == 0xFF ? 1 : 0;    // R=G=B (Р»РёР±Рѕ 00, Р»РёР±Рѕ FF), Р±РµСЂС‘Рј Р·РЅР°С‡РµРЅРёРµ РёР· Р»СЋР±РѕРіРѕ
+        for(WORD k = 1; k < 8; k++)    // РёР· 8-РјРё С‚РѕС‡РµРє (С†РІРµС‚РѕРІ) РЅСѓР¶РЅРѕ СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РѕРґРёРЅ Р±Р°Р№С‚
         {
           tmp <<= 1;
           if(j < BMInfoHeader.Width)
@@ -644,29 +644,29 @@ void Image::writeImage(char *fileName)
 
   else if(BMInfoHeader.BitCount == 4)
   {
-    // Пишем палитру (16 цветов)
+    // РџРёС€РµРј РїР°Р»РёС‚СЂСѓ (16 С†РІРµС‚РѕРІ)
     for(WORD i = 0; i < 16; i++)
     	fout.write((char*)&Palette[i], sizeof(_RGBQUAD));
 
-    BYTE c;   // Номер цвета в палитре
+    BYTE c;   // РќРѕРјРµСЂ С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ
 
     for (DWORD i = 0; i < BMInfoHeader.Height; i++)
     {
       for (DWORD j = 0; j < BMInfoHeader.Width; )
       {
-        // Для текущей точки изображения проходим по всей палитре и ищем совпадение
+        // Р”Р»СЏ С‚РµРєСѓС‰РµР№ С‚РѕС‡РєРё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРѕС…РѕРґРёРј РїРѕ РІСЃРµР№ РїР°Р»РёС‚СЂРµ Рё РёС‰РµРј СЃРѕРІРїР°РґРµРЅРёРµ
         for(c = 0; c < 16; c++)
           if(Rgbtriple[i * BMInfoHeader.Width + j] == Palette[c]) break;
 
-        tmp = c < 16 ? c : 15;    // Если цвет найден, пишем его номер в палитре
-                                  // иначе (чего не должно быть) - последний цвет (белый)
+        tmp = c < 16 ? c : 15;    // Р•СЃР»Рё С†РІРµС‚ РЅР°Р№РґРµРЅ, РїРёС€РµРј РµРіРѕ РЅРѕРјРµСЂ РІ РїР°Р»РёС‚СЂРµ
+                                  // РёРЅР°С‡Рµ (С‡РµРіРѕ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ) - РїРѕСЃР»РµРґРЅРёР№ С†РІРµС‚ (Р±РµР»С‹Р№)
 
-        tmp <<= 4;      // Сдвигаем влево
+        tmp <<= 4;      // РЎРґРІРёРіР°РµРј РІР»РµРІРѕ
         j++;
 
         if(j < BMInfoHeader.Width)
         {
-          for(c = 0; c < 16; c++)   // то же самое для следующей точки
+          for(c = 0; c < 16; c++)   // С‚Рѕ Р¶Рµ СЃР°РјРѕРµ РґР»СЏ СЃР»РµРґСѓСЋС‰РµР№ С‚РѕС‡РєРё
             if(Rgbtriple[i * BMInfoHeader.Width + j] == Palette[c]) break;
 
           tmp += (c < 16 ? c : 15);
@@ -686,7 +686,7 @@ void Image::writeImage(char *fileName)
 		for(WORD i = 0; i < 256; i++)
 			fout.write((char*)&Palette[i], sizeof(_RGBQUAD));
 
-    WORD c;   // Номер цвета в палитре
+    WORD c;   // РќРѕРјРµСЂ С†РІРµС‚Р° РІ РїР°Р»РёС‚СЂРµ
 
 		for (DWORD i = 0; i < BMInfoHeader.Height; i++)
     {
@@ -755,7 +755,7 @@ Image& Image::copyImage (const Image& sourceImage)
     BMInfoHeader.XPelsPerMeter = sourceImage.BMInfoHeader.XPelsPerMeter;
     BMInfoHeader.YPelsPerMeter = sourceImage.BMInfoHeader.YPelsPerMeter;
 
-    // Копируем палитру
+    // РљРѕРїРёСЂСѓРµРј РїР°Р»РёС‚СЂСѓ
     if(BMInfoHeader.BitCount < 24)
     {
       Palette = new _RGBQUAD[(WORD)pow(2, BMInfoHeader.BitCount)];
@@ -763,7 +763,7 @@ Image& Image::copyImage (const Image& sourceImage)
         Palette[i] = sourceImage.Palette[i];
     }
 
-      // Копируем данные
+      // РљРѕРїРёСЂСѓРµРј РґР°РЅРЅС‹Рµ
     Rgbtriple = new _RGBTRIPLE[BMInfoHeader.Width * BMInfoHeader.Height];
 
     for(DWORD i = 0; i < BMInfoHeader.Height; i++)
@@ -773,41 +773,41 @@ Image& Image::copyImage (const Image& sourceImage)
     return *this;
 }
 
-    // Масштабирование
+    // РњР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёРµ
 Image& Image::operator /= (const Image& sourceImage)
 {
-  if(BMInfoHeader.Size == 0) return *this;    // Масштабируем только существующие изображения
-            // Если глубина цвета не совпадает, то тоже выходим
+  if(BMInfoHeader.Size == 0) return *this;    // РњР°СЃС€С‚Р°Р±РёСЂСѓРµРј С‚РѕР»СЊРєРѕ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёРµ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+            // Р•СЃР»Рё РіР»СѓР±РёРЅР° С†РІРµС‚Р° РЅРµ СЃРѕРІРїР°РґР°РµС‚, С‚Рѕ С‚РѕР¶Рµ РІС‹С…РѕРґРёРј
   if(BMInfoHeader.BitCount != sourceImage.BMInfoHeader.BitCount) return *this;
 
   cout << "Start scaling... Size of source image: "
 	        << sourceImage.BMInfoHeader.Width << " x " << sourceImage.BMInfoHeader.Height << endl;
 
-  // Для масштабирования в изображении-источнике интересуют только его данные
-  DWORD H = BMInfoHeader.Height;    // Целевая высота
-  DWORD W = BMInfoHeader.Width;     // Целевая ширина
-  DWORD h = sourceImage.BMInfoHeader.Height;        // Высота изображения-источника
-  DWORD w = sourceImage.BMInfoHeader.Width;         // Ширина изображения-источника
-  WORD r, g, b, cnt;     // Здесь будут составляющие среднего цвета
+  // Р”Р»СЏ РјР°СЃС€С‚Р°Р±РёСЂРѕРІР°РЅРёСЏ РІ РёР·РѕР±СЂР°Р¶РµРЅРёРё-РёСЃС‚РѕС‡РЅРёРєРµ РёРЅС‚РµСЂРµСЃСѓСЋС‚ С‚РѕР»СЊРєРѕ РµРіРѕ РґР°РЅРЅС‹Рµ
+  DWORD H = BMInfoHeader.Height;    // Р¦РµР»РµРІР°СЏ РІС‹СЃРѕС‚Р°
+  DWORD W = BMInfoHeader.Width;     // Р¦РµР»РµРІР°СЏ С€РёСЂРёРЅР°
+  DWORD h = sourceImage.BMInfoHeader.Height;        // Р’С‹СЃРѕС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ-РёСЃС‚РѕС‡РЅРёРєР°
+  DWORD w = sourceImage.BMInfoHeader.Width;         // РЁРёСЂРёРЅР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ-РёСЃС‚РѕС‡РЅРёРєР°
+  WORD r, g, b, cnt;     // Р—РґРµСЃСЊ Р±СѓРґСѓС‚ СЃРѕСЃС‚Р°РІР»СЏСЋС‰РёРµ СЃСЂРµРґРЅРµРіРѕ С†РІРµС‚Р°
 
 
-  // Заменяем палитру конечного изображения палитрой изображения-источника
+  // Р—Р°РјРµРЅСЏРµРј РїР°Р»РёС‚СЂСѓ РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РїР°Р»РёС‚СЂРѕР№ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ-РёСЃС‚РѕС‡РЅРёРєР°
   if(BMInfoHeader.BitCount < 24)
     for(WORD i = 0; i < pow(2, BMInfoHeader.BitCount); i++)
     {
       Palette[i] = sourceImage.Palette[i];
     }
 
-  // Масштабируем изображение методом суперсемплинга
-  for(DWORD i = 0; i < H; i++)    // Сверху вниз
+  // РњР°СЃС€С‚Р°Р±РёСЂСѓРµРј РёР·РѕР±СЂР°Р¶РµРЅРёРµ РјРµС‚РѕРґРѕРј СЃСѓРїРµСЂСЃРµРјРїР»РёРЅРіР°
+  for(DWORD i = 0; i < H; i++)    // РЎРІРµСЂС…Сѓ РІРЅРёР·
   {
-    for(DWORD j = 0; j < W; j++)  // Слева направо
+    for(DWORD j = 0; j < W; j++)  // РЎР»РµРІР° РЅР°РїСЂР°РІРѕ
     {
-      // Для каждой точки нового изображения нужно найти её цвет
+      // Р”Р»СЏ РєР°Р¶РґРѕР№ С‚РѕС‡РєРё РЅРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё РµС‘ С†РІРµС‚
       r = g = b = 0;
       cnt = 0;
-        // Для каждой точки нового изображения ищем те точки исходного, которые определяют её цвет
-        //  и находим среднее значение
+        // Р”Р»СЏ РєР°Р¶РґРѕР№ С‚РѕС‡РєРё РЅРѕРІРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РёС‰РµРј С‚Рµ С‚РѕС‡РєРё РёСЃС…РѕРґРЅРѕРіРѕ, РєРѕС‚РѕСЂС‹Рµ РѕРїСЂРµРґРµР»СЏСЋС‚ РµС‘ С†РІРµС‚
+        //  Рё РЅР°С…РѕРґРёРј СЃСЂРµРґРЅРµРµ Р·РЅР°С‡РµРЅРёРµ
       for(DWORD k = floor(i*h/(double)H); k < ceil((i+1)*h/(double)H); k++)
         for(DWORD l = floor(j*w/(double)W); l < ceil((j+1)*w/(double)W); l++)
         {
@@ -821,8 +821,8 @@ Image& Image::operator /= (const Image& sourceImage)
       g /= cnt;
       b /= cnt;
 
-        // Если изображение палитровое, то новый средний цвет скорее всего не вписывается в палитру
-        // поэтому нужно найти соответствующий ему существующий цвет
+        // Р•СЃР»Рё РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїР°Р»РёС‚СЂРѕРІРѕРµ, С‚Рѕ РЅРѕРІС‹Р№ СЃСЂРµРґРЅРёР№ С†РІРµС‚ СЃРєРѕСЂРµРµ РІСЃРµРіРѕ РЅРµ РІРїРёСЃС‹РІР°РµС‚СЃСЏ РІ РїР°Р»РёС‚СЂСѓ
+        // РїРѕСЌС‚РѕРјСѓ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РµРјСѓ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С†РІРµС‚
       if(BMInfoHeader.BitCount < 24)
       {
         WORD num;
@@ -831,7 +831,7 @@ Image& Image::operator /= (const Image& sourceImage)
         Rgbtriple[i * W + j].Green = Palette[num].Green;
         Rgbtriple[i * W + j].Blue = Palette[num].Blue;
       }
-      else      // иначе просто записываем этот цвет
+      else      // РёРЅР°С‡Рµ РїСЂРѕСЃС‚Рѕ Р·Р°РїРёСЃС‹РІР°РµРј СЌС‚РѕС‚ С†РІРµС‚
       {
         Rgbtriple[i * W + j].Red = r;
         Rgbtriple[i * W + j].Green = g;
@@ -847,7 +847,7 @@ Image& Image::operator /= (const Image& sourceImage)
 }
 // ------------------
 
-// Изменение глубины
+// РР·РјРµРЅРµРЅРёРµ РіР»СѓР±РёРЅС‹
 Image Image::operator / (const WORD Depth)
 {
   if(BMInfoHeader.BitCount == Depth)
@@ -861,7 +861,7 @@ Image Image::operator / (const WORD Depth)
     return *this;
   }
 
-    // Создаём новое изображение-приёмник
+    // РЎРѕР·РґР°С‘Рј РЅРѕРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ-РїСЂРёС‘РјРЅРёРє
   Image newImage(0, Depth, BMInfoHeader.Width, BMInfoHeader.Height);
 
   if(Depth >= 24)
@@ -871,7 +871,7 @@ Image Image::operator / (const WORD Depth)
         newImage.Rgbtriple[i*BMInfoHeader.Width + j] = Rgbtriple[i*BMInfoHeader.Width + j];
   }
 
-  else    // требуется сопоставить старые цвета с новой палитрой
+  else    // С‚СЂРµР±СѓРµС‚СЃСЏ СЃРѕРїРѕСЃС‚Р°РІРёС‚СЊ СЃС‚Р°СЂС‹Рµ С†РІРµС‚Р° СЃ РЅРѕРІРѕР№ РїР°Р»РёС‚СЂРѕР№
   {
     for(DWORD i = 0; i < BMInfoHeader.Height; i++)
       for(DWORD j = 0; j < BMInfoHeader.Width; j++)
@@ -915,31 +915,31 @@ int main(int argc, char* argv[])
     return 0;
   }
 
-  else      // Если параметров 2 и больше, то обрабатываем
+  else      // Р•СЃР»Рё РїР°СЂР°РјРµС‚СЂРѕРІ 2 Рё Р±РѕР»СЊС€Рµ, С‚Рѕ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј
   {
     for(int i = 1; i < argc; i++)
     {
-      if(strcmp(argv[i], "/input") == 0)      // имя входного файла
+      if(strcmp(argv[i], "/input") == 0)      // РёРјСЏ РІС…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
       {
         if(argc < i + 1) { cout << "Incorrect format. Use /? for more information.\n"; return 0; }
         strcpy(inputFileName, argv[++i]);
       }
-      else if(strcmp(argv[i], "/output") == 0)    // имя выходного файла
+      else if(strcmp(argv[i], "/output") == 0)    // РёРјСЏ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
       {
         if(argc < i + 1) { cout << "Incorrect format. Use /? for more information.\n"; return 0; }
         strcpy(outputFileName, argv[++i]);
       }
-      else if(strcmp(argv[i], "/height") == 0)    // Высота конечного изображения
+      else if(strcmp(argv[i], "/height") == 0)    // Р’С‹СЃРѕС‚Р° РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
       {
         if(argc < i + 1) { cout << "Incorrect format. Use /? for more information.\n"; return 0; }
         Height = atoi(argv[++i]);
       }
-      else if(strcmp(argv[i], "/width") == 0)    // Ширина конечного изображения
+      else if(strcmp(argv[i], "/width") == 0)    // РЁРёСЂРёРЅР° РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
       {
         if(argc < i + 1) { cout << "Incorrect format. Use /? for more information.\n"; return 0; }
         Width = atoi(argv[++i]);
       }
-      else if(strcmp(argv[i], "/bitcount") == 0 || strcmp(argv[i], "/depth") == 0)    // Глубина цвета конечного изображения
+      else if(strcmp(argv[i], "/bitcount") == 0 || strcmp(argv[i], "/depth") == 0)    // Р“Р»СѓР±РёРЅР° С†РІРµС‚Р° РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
       {
         if(argc < i + 1) { cout << "Incorrect format. Use /? for more information.\n"; return 0; }
         BitCount = atoi(argv[++i]);
@@ -949,7 +949,7 @@ int main(int argc, char* argv[])
             return 0;
           }
       }
-      else if(strcmp(argv[i], "/createnew") == 0)    // Будет создано новое изображение с одним цветом
+      else if(strcmp(argv[i], "/createnew") == 0)    // Р‘СѓРґРµС‚ СЃРѕР·РґР°РЅРѕ РЅРѕРІРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ СЃ РѕРґРЅРёРј С†РІРµС‚РѕРј
       {
         createNewImage = true;
       }
@@ -973,10 +973,10 @@ int main(int argc, char* argv[])
   }
   // --------
 
-  // Выполняем операции в соответствии с указанными параметрами
-  if(createNewImage)    // Создание картинки с нуля
+  // Р’С‹РїРѕР»РЅСЏРµРј РѕРїРµСЂР°С†РёРё РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
+  if(createNewImage)    // РЎРѕР·РґР°РЅРёРµ РєР°СЂС‚РёРЅРєРё СЃ РЅСѓР»СЏ
   {
-    // Не указанные параметры заменяются значениями по умолчанию
+    // РќРµ СѓРєР°Р·Р°РЅРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РјРµРЅСЏСЋС‚СЃСЏ Р·РЅР°С‡РµРЅРёСЏРјРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
     if(Mode == -1) Mode = 0;
     if(BitCount == 0) BitCount = 24;
     if(Height == 0) Height = 100;
@@ -996,12 +996,12 @@ int main(int argc, char* argv[])
     Image inputImage = Image(inputFileName);
     Image outputImage;
 
-    // Изменение масштаба
+    // РР·РјРµРЅРµРЅРёРµ РјР°СЃС€С‚Р°Р±Р°
     if(Height > 0 || Width > 0)
     {
       if(BitCount == 0)
         BitCount = inputImage.getBitCount();
-        // Если задана ТОЛЬКО высота или ширина, то второй параметр будет пропорциональным
+        // Р•СЃР»Рё Р·Р°РґР°РЅР° РўРћР›Р¬РљРћ РІС‹СЃРѕС‚Р° РёР»Рё С€РёСЂРёРЅР°, С‚Рѕ РІС‚РѕСЂРѕР№ РїР°СЂР°РјРµС‚СЂ Р±СѓРґРµС‚ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅС‹Рј
       if(Height == 0) Height = round(Width * inputImage.getHeight() / inputImage.getWidth());
       if(Width == 0) Width = round(Height * inputImage.getWidth() / inputImage.getHeight());
 
@@ -1011,23 +1011,23 @@ int main(int argc, char* argv[])
         {
           cout << "Changing depth and scaling...\n";
           Image tmpImg = (inputImage / BitCount);
-          outputImage /= tmpImg;   // Изменение масштаба и глубины
+          outputImage /= tmpImg;   // РР·РјРµРЅРµРЅРёРµ РјР°СЃС€С‚Р°Р±Р° Рё РіР»СѓР±РёРЅС‹
         }
       else
         {
           cout << "Scaling...\n";
-          outputImage /= inputImage;    // Изменение масштаба
+          outputImage /= inputImage;    // РР·РјРµРЅРµРЅРёРµ РјР°СЃС€С‚Р°Р±Р°
         }
     }
     else if(BitCount != 0 && BitCount != inputImage.getBitCount())
     {
       cout << "Changing depth...\n";
-      outputImage = (inputImage / BitCount);    // Изменение глубины
+      outputImage = (inputImage / BitCount);    // РР·РјРµРЅРµРЅРёРµ РіР»СѓР±РёРЅС‹
     }
     else
     {
       cout << "Just coping...\n";
-      outputImage = inputImage;         // Простое копирование
+      outputImage = inputImage;         // РџСЂРѕСЃС‚РѕРµ РєРѕРїРёСЂРѕРІР°РЅРёРµ
     }
 
     outputImage.writeImage(outputFileName);
